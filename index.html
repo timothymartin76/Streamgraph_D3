@@ -25,7 +25,7 @@
     </style>
   </head>
   <body>
-    <h2 style="padding-left:60px;">March 12 SRs</h2>
+    <h2 style="padding-left:60px;">March 12 Service Requests</h2>
     <script src="d3/d3.js"></script>
     <script src="jquery/jquery-1.11.2.min.js"></script>
     <script src="bootstrap-3.3.4-dist/js/bootstrap.js"></script>
@@ -111,7 +111,15 @@
             .attr("dy", ".71em")
             .style("text-anchor", "end")
             .text("Number of SRs");
-
+            
+          svg.append("g")
+            .attr("class", "x axis")
+            .call(yAxis)
+			      .append("text") 
+            .attr("x", 850)
+            .attr("dy", "49em") 
+            .text("Hour of day");
+            
         var selection = svg.selectAll(".series")
           .data(seriesArr)
           .enter().append("g")
@@ -157,6 +165,7 @@
             .attr("y", 6)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
+            .style("font-size", "11px")
             .text(function (d) { return d; });
 
         function removePopovers () {
